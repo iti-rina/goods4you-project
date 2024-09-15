@@ -10,8 +10,8 @@ const ProductCard: React.FC<ProductProps> = ({ product }) => {
       <img src={product.coverImage} alt={`Фотография-обложка товара ${product.name}`} className={styles.img} />
       <div className={styles.infoWrapper}>
         <div className={styles.info}>
-          <p>{product.name}</p>
-          <p>{product.discountPrice}</p>
+          <p className={styles.name}>{product.name}</p>
+          <p className={styles.price}>${product.discountPrice}</p>
         </div>
         <Btn iconName='cart' />
       </div>
