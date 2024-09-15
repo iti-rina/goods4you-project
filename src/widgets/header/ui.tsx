@@ -7,11 +7,11 @@ type HeaderPropsType = {
 
 const Header: React.FC<HeaderPropsType> = ({ user }) => {
   return(
-    <header>
+    <header className={styles.header}>
       <LinkComponent text='Goods4you' url='#' isLogo={true} />
       <nav aria-label='Основная навигация'>
-        <ul className={styles.menuLink}>
-          <li><LinkComponent text='Catalog' url='#'/></li>
+        <ul className={styles.menuList}>
+          <li><LinkComponent text='Catalog' url='#catalog'/></li>
           <li><LinkComponent text='FAQ' url='#'/></li>
           <li><LinkComponent text='Cart' url='#'/></li>
           <li><LinkComponent text={user} url='#'/></li>

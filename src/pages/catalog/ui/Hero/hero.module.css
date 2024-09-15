@@ -6,7 +6,6 @@
   text-align: left;
   display: flex;
   flex-direction: column;
-  gap: 30px;
   padding: 150px 130px 115px;
   position: relative;
 }
@@ -23,7 +22,10 @@
 }
 
 .wrapper {
+  display: flex;
+  flex-direction: column;
   width: 46em;
+  gap: 30px;
 }
 
 .title {
