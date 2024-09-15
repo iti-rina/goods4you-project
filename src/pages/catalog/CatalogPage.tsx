@@ -5,12 +5,12 @@ import { Hero } from './ui/Hero';
 
 const CatalogPage: React.FC = () => {
   return (
-    <main>
+    <>
       <Title title='Catalog | Goods4you'/>
       <Hero />
       <Catalog />
       <FAQ />
-    </main>
+    </>
   );
 }
 
