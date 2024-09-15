@@ -1,5 +1,15 @@
+.header {
+  background-color: var(--global-violet);
+  width: 100vw;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 35px 130px;
+  align-items: center;
+}
+
 .menuList {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 40px;
 }
