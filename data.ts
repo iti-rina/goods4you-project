@@ -12,8 +12,8 @@ const productItem: Product = {
   stockQnt: 5,
   warranty: '1 month warranty',
   ship: 'Ships in 1 month',
-  images: ['./src/assets/images/main_photo.png', './src/assets/images/main_photo.png', './src/assets/images/main_photo.png', './src/assets/images/main_photo.png', './src/assets/images/main_photo.png', './src/assets/images/main_photo.png'],
-  coverImage: './src/assets/images/main_photo.png'
+  images: ['./src/assets/images/catalog.png', './src/assets/images/catalog.png', './src/assets/images/catalog.png', './src/assets/images/catalog.png', './src/assets/images/catalog.png', './src/assets/images/catalog.png'],
+  coverImage: './src/assets/images/catalog.png'
 };
 
 export const products = new Array(12).fill(productItem);
