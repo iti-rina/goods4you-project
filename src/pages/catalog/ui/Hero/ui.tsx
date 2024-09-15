@@ -4,8 +4,8 @@ import styles from './hero.module.css';
 const Hero: React.FC = () => {
   return (
     <section className={styles.heroSection} >
-      <h1>Any products from famous brands with worldwide delivery</h1>
-      <p>We sell smartphones, laptops, clothes, shoes and many other products at low prices</p>
+      <h1 className={styles.title}>Any products from famous brands with worldwide delivery</h1>
+      <p className={styles.subtitle}>We sell smartphones, laptops, clothes, shoes and many other products at low prices</p>
       <Btn text='Go to shopping' isActive={true} />
     </section>
   );
