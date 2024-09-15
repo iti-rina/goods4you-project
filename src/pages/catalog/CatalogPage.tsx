@@ -3,7 +3,6 @@ import { Catalog } from './ui/Catalog';
 import { FAQ } from './ui/FAQ';
 import { Hero } from './ui/Hero';
 
-
 const CatalogPage: React.FC = () => {
   return (
     <main>
