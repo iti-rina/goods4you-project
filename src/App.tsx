@@ -1,11 +1,11 @@
 import './App.css'
-import { CatalogPage } from './pages/catalog'
+import { AppRoutes } from './app/routes'
 
 function App() {
 
   return (
     <>
-    <CatalogPage />
+      <AppRoutes />
     </>
   )
 }
