@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styles from './link.module.css';
 
 type LinkPropsType = {
@@ -8,9 +9,9 @@ type LinkPropsType = {
 
 const LinkComponent: React.FC<LinkPropsType> = ({ text, url, isLogo=false }) => {
   return (
-    <a href={url} className={isLogo ? styles.logo : styles.link} >
+    <Link to={url} className={`${styles.a} ${isLogo ? styles.logo : styles.link}`}>
       {text}
-    </a>
+    </Link>
   )
 }
 
