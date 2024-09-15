@@ -1,0 +1,8 @@
+.heroSection {
+  background-color: var(--global-violet);
+}
+
+.heroSection::after {
+  content: 'Goods4you';
+  opacity: 12%;
+}
