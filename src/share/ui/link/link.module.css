@@ -1,0 +1,11 @@
+.link {
+  font-weight: 600;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.logo {
+  font-weight: 700;
+}
