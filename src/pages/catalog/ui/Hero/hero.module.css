@@ -1,17 +1,36 @@
 .heroSection {
   background-color: var(--global-violet);
+  width: 100vw;
+  height: 500px;
   color: #fff;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 150px 130px 115px;
+  position: relative;
 }
 
 .heroSection::after {
   content: 'Goods4you';
   opacity: 12%;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 192px;
+  font-weight: bold;
+}
+
+.wrapper {
+  width: 46em;
 }
 
 .title {
   color: #fff;
   font-weight: 400;
   font-size: var(--font-size-3xl);
+  z-index: 5;
 }
 
 .subtitle {
