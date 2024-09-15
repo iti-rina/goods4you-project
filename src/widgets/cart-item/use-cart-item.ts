@@ -1,5 +1,7 @@
+import type { Product } from "../../share"
+
 export type CartItemValues = {
-  product: ProductValues
+  product: Product
   quantity: number
 }
 
