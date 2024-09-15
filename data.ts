@@ -1,6 +1,6 @@
 import type { Product } from './src/share/types';
 
-export const productItem: Product = {
+const productItem: Product = {
   id: '1',
   name: 'Essence Mascara Lash Princess',
   description: 'The Essence Mascara Lash Princess is a popular mascara known for its volumizing and lengthening effects. Achieve dramatic lashes with this long-lasting and cruelty-free formula.',
@@ -12,6 +12,8 @@ export const productItem: Product = {
   stockQnt: 5,
   warranty: '1 month warranty',
   ship: 'Ships in 1 month',
-  images: [],
-  coverImage: ''
-}
+  images: ['./src/assets/images/main_photo.png', './src/assets/images/main_photo.png', './src/assets/images/main_photo.png', './src/assets/images/main_photo.png', './src/assets/images/main_photo.png', './src/assets/images/main_photo.png'],
+  coverImage: './src/assets/images/main_photo.png'
+};
+
+export const products = new Array(12).fill(productItem);
