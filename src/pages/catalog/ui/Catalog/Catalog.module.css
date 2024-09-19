@@ -1,0 +1,17 @@
+.wrapper {
+  padding: 48px 130px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  align-items: center;
+}
+
+.btn {
+  align-self: center;
+}
+
+.title {
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  align-self: flex-start;
+}

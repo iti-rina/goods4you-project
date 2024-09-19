@@ -1,0 +1,36 @@
+.faqSection {
+  padding: 60px 280px;
+  background-color: var(--global-violet);
+}
+
+.sectionTitle {
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  align-self: flex-start;
+  color: #fff;
+}
+
+.accordionContainer {
+  border-top: 1px solid #fff;
+  border-top: 1px solid #fff;
+}
+
+.header {
+  display: 'flex';
+  justify-content: 'space-between';
+  align-items: 'center';
+}
+
+.title {
+  color: #fff;
+}
+
+.button {
+  color: #fff;
+  background-color: inherit;
+  border: none;
+}
+
+.content {
+  color: #fff;
+}

@@ -1,0 +1,19 @@
+.a {
+  text-decoration: none;
+}
+
+.link {
+  font-weight: 600;
+  color: #fff;
+}
+
+.link:hover {
+  text-decoration: underline;
+  color: var(--global-gray-200);
+}
+
+.logo {
+  font-weight: 700;
+  color: #fff;
+  font-size: var(--font-size-2xl);
+}

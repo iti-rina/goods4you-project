@@ -1,0 +1,43 @@
+:root {
+  --global-violet: #484283;
+  --global-orange: #F14F4F;
+  --global-orange-dark: #8C2828;
+  --global-orange-white: #F8AFAF;
+  --global-gray-900: #444B58;
+  --global-gray-200: #D5D5D5;
+  --global-gray-100: #F6F6F6;
+  --global-gray-500: #B2B5BB;
+
+  --font-size-s: 14px;
+  --font-size-m: 16px;
+  --font-size-l: 18px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 30px;
+  --font-size-3xl: 36px;
+
+
+}
+
+* {
+  box-sizing: border-box;
+  color: var(--global-gray-900);
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Jost', sans-serif;
+  margin: 0 auto;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  font-weight: normal;
+  line-height: inherit;
+}
+
+
