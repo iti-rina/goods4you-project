@@ -7,11 +7,11 @@ type ProductProps = {
 const ProductCard: React.FC<ProductProps> = ({ product }) => {
   return (
     <article className={styles.card}>
-      <img src={product.coverImage} alt={`Фотография-обложка товара ${product.name}`} className={styles.img} />
+      <img src={product.thumbnail} alt={`Фотография-обложка товара ${product.title}`} className={styles.img} />
       <div className={styles.infoWrapper}>
         <div className={styles.info}>
-          <p className={styles.name}>{product.name}</p>
-          <p className={styles.price}>${product.discountPrice}</p>
+          <p className={styles.name}>{product.title}</p>
+          <p className={styles.price}>${product.discountPercentage}</p>
         </div>
         <Btn iconName='cart' />
       </div>

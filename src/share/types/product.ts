@@ -1,15 +1,14 @@
 export type Product = {
   id: string
-  name: string
+  title: string
   description: string
-  firstPrice: string
-  discountPrice: string
+  price: number
+  discountPercentage: number
   rating: number
-  categories: Array<string>
-  stock: boolean
-  stockQnt: number
-  warranty: string
-  ship: string
+  tags: Array<string>
+  stock: number
+  warrantyInformation: string
+  shippingInformation: string
   images: Array<string>
-  coverImage: string
+  thumbnail: string
 }
