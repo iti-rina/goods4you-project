@@ -13,7 +13,7 @@ const Header: React.FC<HeaderPropsType> = ({ user }) => {
         <ul className={styles.menuList}>
           <li><LinkComponent text='Catalog' url='#catalog'/></li>
           <li><LinkComponent text='FAQ' url='#'/></li>
-          <li><LinkComponent text='Cart' url='#'/></li>
+          <li><LinkComponent text='Cart' url='/cart'/></li>
           <li><LinkComponent text={user} url='#'/></li>
         </ul>
       </nav>
