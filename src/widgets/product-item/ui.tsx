@@ -9,7 +9,9 @@ const ProductCard: React.FC<ProductProps> = ({ product }) => {
   return (
     <Link to={`/product/${product.id}`}>
       <article className={styles.card}>
-        <img src={product.thumbnail} alt={`Фотография-обложка товара ${product.title}`} className={styles.img} />
+        <div className={styles.imageContainer}>
+          <img src={product.thumbnail} alt={`Фотография-обложка товара ${product.title}`} className={styles.img} />
+        </div>
         <div className={styles.infoWrapper}>
           <div className={styles.info}>
             <p className={styles.name}>{product.title}</p>
