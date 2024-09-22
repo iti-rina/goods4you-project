@@ -2,6 +2,10 @@ import styles from './productInfo.module.css';
 import { Product } from '../../share'
 import {AddToCart} from '../../features'
 import { StarRating } from '../../share/ui/rating';
+import { useSelector } from 'react-redux';
+import { selectCartProducts } from '../../pages/cart/model/cartSlice';
+import type { CartItem } from '../../widgets/cart-item/ui';
+import { Control } from '../../widgets/cart-item/ui';
 
 type ProductInfoValues = {
   product: Product;
@@ -28,7 +32,8 @@ const ProductInfo: React.FC<ProductInfoValues> = ({ product }) => {
 
   const rating = roundToClosestNumber(product.rating);
 
-  
+  const cartProducts: CartItem[] = useSelector(selectCartProducts);
+  const findInCart = cartProducts.find(el => el.id == product.id);
 
   return (
     <div className={styles.container}>
@@ -58,7 +63,11 @@ const ProductInfo: React.FC<ProductInfoValues> = ({ product }) => {
           <div className={styles.discount}>Your discount: <span className={styles.bold}>{product.discountPercentage}%</span></div>
         </div>
         <div className={styles.add}>
-          <AddToCart type='icon' id={product.id} />
+          { 
+            findInCart 
+            ? <Control count={findInCart.quantity} /> 
+            : <AddToCart type='icon' id={product.id} />
+          }
         </div>
       </div>
     </div>
