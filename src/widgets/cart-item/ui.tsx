@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Btn } from "../../share";
 import styles from './cartItem.module.css';
-import { roundUpToTwoDecimalPlaces } from "../../entities/product-info/ui";
+import { roundUpToTwoDecimalPlaces } from '../../entities';
 
 type CartItemProps = {
   data: CartItem
