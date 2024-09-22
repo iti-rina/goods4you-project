@@ -4,14 +4,15 @@ import styles from './productItem.module.css';
 import { useSelector } from 'react-redux';
 import { selectCartProducts } from '../../pages/cart/model/cartSlice';
 import { Control } from '../cart-item';
+import type { CartItem } from '../cart-item/ui';
 
 type ProductProps = {
   product: Product
 }
 const ProductCard: React.FC<ProductProps> = ({ product }) => {
-  const cartProducts = useSelector(selectCartProducts);
+  const cartProducts: CartItem[] = useSelector(selectCartProducts);
 
-  const findInCart = cartProducts.find(el => el.id === product.id);
+  const findInCart = cartProducts.find(el => el.id == product.id);
   
   return (
     <Link to={`/product/${product.id}`}>
