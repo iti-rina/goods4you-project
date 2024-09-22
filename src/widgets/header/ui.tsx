@@ -12,7 +12,6 @@ type HeaderPropsType = {
 const Header: React.FC<HeaderPropsType> = ({ user }) => {
   const dispatch = useDispatch();
   const { cart, loading, error } = useSelector((state) => state.cart);
-  console.log(cart);
 
   useEffect(() => {
     dispatch(fetchCart());
