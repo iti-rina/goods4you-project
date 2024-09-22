@@ -19,6 +19,7 @@
   padding: 0 10px 0 10px;
   justify-content: space-between;
   align-items: flex-start;
+  gap: 10px;
 }
 
 .info {
@@ -26,6 +27,13 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 6px;
+}
+
+.cuttedInfo {
+  width: 152px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .name {
