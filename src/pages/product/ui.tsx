@@ -27,7 +27,7 @@ const ProductPage: React.FC = () => {
           {isLoading && <p>Загрузка...</p>}
           {error && <p>Ошибка: {error}</p>}
   
-          <Slider images={productItem.images} />
+          <Slider thumbnail={data.thumbnail} images={data.images} />
           <ProductInfo product={data} />
         </div>
       </main>
