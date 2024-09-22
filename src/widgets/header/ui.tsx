@@ -22,7 +22,7 @@ const Header: React.FC<HeaderPropsType> = ({ user }) => {
       <LinkComponent text='Goods4you' url='#' isLogo={true} />
       <nav aria-label='Основная навигация'>
         <ul className={styles.menuList}>
-          <li><LinkComponent text='Catalog' url='#catalog'/></li>
+          <li><LinkComponent text='Catalog' url='/'/></li>
           <li><LinkComponent text='FAQ' url='#'/></li>
           <li className={styles.cartWrapper}>
             <LinkComponent text='Cart' url='/cart'/>
