@@ -7,7 +7,7 @@ type CartItemProps = {
   data: CartItem
 };
 
-type CartItem = {
+export type CartItem = {
   id: number;
   title: string;
   price: number;
@@ -48,10 +48,10 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
 
 type ControlProps = {
   count: number;
-  increment: () => void;
-  decrement: () => void;
+  increment?: () => void;
+  decrement?: () => void;
 }
-const Control: React.FC<ControlProps> = ({ count, increment, decrement }) => {
+export const Control: React.FC<ControlProps> = ({ count, increment, decrement }) => {
   return (
     <div className={styles.control}>
       <Btn iconName='minus' onClick={decrement}/>
