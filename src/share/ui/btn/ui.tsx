@@ -1,6 +1,5 @@
 import styles from './btn.module.css';
-import { MinusIcon } from '../../../assets/icons/minus';
-import { PlusIcon } from '../../../assets/icons/plus';
+import { MinusIcon, PlusIcon, CartIcon } from '../../../assets/icons';
 
 type BtnValues = {
   text: string
@@ -20,6 +19,8 @@ const Btn: React.FC<Partial<BtnValues>> = ({ text, iconName, isActive=true, styl
       return MinusIcon;
     } else if (name === 'plus') {
       return PlusIcon;
+    } else if (name === 'cart') {
+      return CartIcon;
     }
   };
 
