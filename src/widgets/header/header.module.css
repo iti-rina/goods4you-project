@@ -13,3 +13,8 @@
   flex-direction: row;
   gap: 40px;
 }
+
+.cartWrapper {
+  display: flex;
+  gap: 6px;
+}

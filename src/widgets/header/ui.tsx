@@ -1,5 +1,6 @@
 import { LinkComponent } from "../../share/ui/link";
 import styles from './header.module.css';
+import { CartIcon } from "../../assets/icons";
 
 type HeaderPropsType = {
   user: string
@@ -13,7 +14,10 @@ const Header: React.FC<HeaderPropsType> = ({ user }) => {
         <ul className={styles.menuList}>
           <li><LinkComponent text='Catalog' url='#catalog'/></li>
           <li><LinkComponent text='FAQ' url='#'/></li>
-          <li><LinkComponent text='Cart' url='/cart'/></li>
+          <li className={styles.cartWrapper}>
+            <LinkComponent text='Cart' url='/cart'/>
+            <div className={styles.cartIcon}>{CartIcon}</div>
+          </li>
           <li><LinkComponent text={user} url='#'/></li>
         </ul>
       </nav>
