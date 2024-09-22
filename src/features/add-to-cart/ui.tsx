@@ -3,7 +3,7 @@ import { Btn } from "../../share";
 
 const AddToCart: React.FC<AddToCartValues> = () => {
   return (
-    <Btn></Btn>
+    <Btn iconName='cart'></Btn>
   )
 }
 

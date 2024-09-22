@@ -58,7 +58,7 @@ const ProductInfo: React.FC<ProductInfoValues> = ({ product }) => {
           <div className={styles.discount}>Your discount: <span className={styles.bold}>{product.discountPercentage}%</span></div>
         </div>
         <div className={styles.add}>
-          <AddToCart type={'text'} id={product.id} />
+          <AddToCart type='icon' id={product.id} />
         </div>
       </div>
     </div>
