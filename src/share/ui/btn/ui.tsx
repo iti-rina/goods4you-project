@@ -1,12 +1,12 @@
 import styles from './btn.module.css';
 import { MinusIcon, PlusIcon, CartIcon } from '../../../assets/icons';
 
-type BtnValues = {
+export type BtnValues = {
   text: string
-  iconName: string 
+  iconName: 'cart' | 'plus' | 'minus' 
   isActive: boolean
   styleProp: string
-  onClick: () => void
+  onClick?: () => void
 }
 
 type IconValues = {
