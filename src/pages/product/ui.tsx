@@ -1,17 +1,39 @@
 import { Slider, ProductInfo } from '../../entities'
 import { productItem } from '../../../data'
 import styles from './productPage.module.css';
+import { useGetProductByIdQuery } from './model/productSlice';
+import { useLocation } from 'react-router-dom';
 
 
 const ProductPage: React.FC = () => {
-  return (
-    <main>
-      <div className={styles.container}>
-        <Slider images={productItem.images} />
-        <ProductInfo product={productItem} />
-      </div>
-    </main>
-  );
+  const { pathname } = useLocation();
+  const id = pathname.split('/').pop();
+
+  const { data, isLoading, error } = useGetProductByIdQuery(id);
+  console.log(data);
+
+  if (isLoading) {
+    return <p>Загрузка...</p>;
+  }
+  
+  if (error) {
+    return <p>Произошла ошибка: {error.message}</p>;
+  }
+  
+  if (data) {
+    return (
+      <main>
+        <div className={styles.container}>
+          {isLoading && <p>Загрузка...</p>}
+          {error && <p>Ошибка: {error}</p>}
+  
+          <Slider images={productItem.images} />
+          <ProductInfo product={data} />
+        </div>
+      </main>
+    );
+  }
+  
 }
 
 export default ProductPage;
