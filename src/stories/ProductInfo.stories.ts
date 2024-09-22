@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import ProductCard from '../widgets/product-item/ui';
+import { ProductInfo } from '../entities';
 import { productItem } from '../../data';
 
 const meta = {
-  title: 'Molecules/ProductCard',
-  component: ProductCard,
+  title: 'Molecules/ProductInfo',
+  component: ProductInfo,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof ProductCard>;
+} satisfies Meta<typeof ProductInfo>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -19,4 +19,3 @@ export const Primary: Story = {
     product: productItem
   },
 };
-
