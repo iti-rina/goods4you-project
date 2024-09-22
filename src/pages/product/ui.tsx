@@ -1,5 +1,4 @@
 import { Slider, ProductInfo } from '../../entities'
-import { productItem } from '../../../data'
 import styles from './productPage.module.css';
 import { useGetProductByIdQuery } from './model/productSlice';
 import { useLocation } from 'react-router-dom';
