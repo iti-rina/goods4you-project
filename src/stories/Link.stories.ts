@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { LinkComponent } from '../share/ui/link';
 
 const meta = {
-  title: 'Atom/Link',
+  title: 'Atoms/Link',
   component: LinkComponent,
   parameters: {
     layout: 'centered',
