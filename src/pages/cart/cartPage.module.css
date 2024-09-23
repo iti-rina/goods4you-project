@@ -1,0 +1,83 @@
+.wrapper {
+  flex-grow: 1;
+  padding: 48px 130px;
+  gap: 48px;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+}
+
+.cartInfoContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.productsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.checkoutContainer {
+  min-width: 356px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.prepWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+}
+
+.totalCountContainer {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--font-size-l);
+  font-weight: 400;
+}
+
+.totalCountText {
+ color: var(--global-gray-500);
+}
+
+.totalCountNum {
+  color: var(--global-gray-900);
+}
+
+.notDiscountPriceContainer {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--font-size-l);
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--global-gray-200);
+}
+
+.notDiscountPriceText {
+  color: var(--global-gray-500);
+  font-weight: 600;
+}
+.notDiscountPriceNum {
+  font-weight: 700;
+  color: var(--global-gray-900);
+}
+
+.totalPriceContainer {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--font-size-xl);
+}
+.totalPriceText {
+  color: var(--global-gray-500);
+  font-weight: 600;
+}
+.totalPriceNum {
+  font-weight: 700;
+  color: var(--global-gray-900);
+}

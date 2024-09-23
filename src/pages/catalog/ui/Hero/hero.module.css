@@ -1,0 +1,42 @@
+.heroSection {
+  background-color: var(--global-violet);
+  width: 100vw;
+  height: 500px;
+  color: #fff;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  padding: 150px 130px 115px;
+  position: relative;
+}
+
+.heroSection::after {
+  content: 'Goods4you';
+  opacity: 12%;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 192px;
+  font-weight: bold;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 46em;
+  gap: 30px;
+}
+
+.title {
+  color: #fff;
+  font-weight: 400;
+  font-size: var(--font-size-3xl);
+  z-index: 5;
+}
+
+.subtitle {
+  color: #fff;
+  font-weight: 600;
+  font-size: var(--font-size-m);
+}

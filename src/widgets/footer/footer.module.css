@@ -1,0 +1,16 @@
+.footer {
+  background-color: var(--global-gray-900);
+  padding: 23px 130px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  font-weight: 700;
+}
+
+.menuList {
+  font-weight: 600;
+  display: flex;
+  gap: 40px;
+}
