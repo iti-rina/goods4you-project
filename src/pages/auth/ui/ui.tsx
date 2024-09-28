@@ -1,15 +1,17 @@
 import { Btn } from "../../../share";
 import { Title } from "../../../share/ui/title";
+import styles from './ui.module.css';
 
 const AuthPage: React.FC = () => {
+
   return (
-    <div>
+    <div className={styles.pageContainer}>
       <Title title='Sign in | Goods4you' />
-      <h1>Sign in</h1>
-      <form>
-        <input placeholder='Login' />
-        <input placeholder='Login' />
-        <Btn text='Password' />
+      <h1 className={styles.heading} >Sign in</h1>
+      <form className={styles.formContainer}>
+        <input placeholder='Login' className={styles.input} />
+        <input placeholder='Password' className={styles.input}/>
+        <Btn text='Sign in' styleProp={styles.signInBtn} />
       </form>
     </div>
   );
