@@ -2,10 +2,11 @@ import styles from './productInfo.module.css';
 import { Product } from '../../share'
 import {AddToCart} from '../../features'
 import { StarRating } from '../../share/ui/rating';
-import { useSelector } from 'react-redux';
-import { selectCartProducts } from '../../pages/cart/model/cartSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectCartId, selectCartProducts } from '../../pages/cart/model/cartSlice';
 import type { CartItem } from '../../widgets/cart-item/ui';
 import { Control } from '../../widgets/cart-item/ui';
+import { manageCart } from '../../pages/cart/model/cartSlice';
 
 type ProductInfoValues = {
   product: Product;
@@ -15,7 +16,7 @@ export function roundUpToTwoDecimalPlaces(num: number) {
   return Math.ceil(num * 100) / 100;
 }
 
-function roundToClosestNumber(num: number) {
+export function roundToClosestNumber(num: number) {
   const fractionalPart = num % 1;
   let result = num;
   if (fractionalPart < 0.5) {
@@ -33,7 +34,41 @@ const ProductInfo: React.FC<ProductInfoValues> = ({ product }) => {
   const rating = roundToClosestNumber(product.rating);
 
   const cartProducts: CartItem[] = useSelector(selectCartProducts);
+  const cartId = useSelector(selectCartId);
   const findInCart = cartProducts.find(el => el.id == product.id);
+
+  const dispatch = useDispatch();
+
+  const handleAddtoCart = () => {
+    let productsToSend = [];
+    if (findInCart) {
+      productsToSend = cartProducts.map(item => {
+        if (item.id === product.id) {
+          return { id: item.id, quantity: item.quantity + 1}
+        } else {
+          return item;
+        }
+      })
+    } else {
+      productsToSend = [...cartProducts, { id: product.id, quantity: 1}]
+    }
+    dispatch(manageCart({'id': cartId, 'products': productsToSend}));
+  }
+
+  const handleRemoveFromCart = () => {
+    const productsToSend = cartProducts.map(item => {
+      if (item.id === product.id) {
+        if (item.quantity === 0 ) {
+          return { id: item.id, quantity: item.quantity}
+        } else {
+          return { id: item.id, quantity: item.quantity - 1}
+        }
+      } else {
+        return item;
+      }
+    });
+    dispatch(manageCart({'id': cartId, 'products': productsToSend}));
+  }
 
   return (
     <div className={styles.container}>
@@ -65,8 +100,8 @@ const ProductInfo: React.FC<ProductInfoValues> = ({ product }) => {
         <div className={styles.add}>
           { 
             findInCart 
-            ? <Control count={findInCart.quantity} /> 
-            : <AddToCart type='icon' id={product.id} />
+            ? <Control count={findInCart.quantity} increment={handleAddtoCart} decrement={handleRemoveFromCart}/> 
+            : <AddToCart type='icon' id={product.id} onClick={handleAddtoCart} />
           }
         </div>
       </div>
