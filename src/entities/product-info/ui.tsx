@@ -6,6 +6,7 @@ import { selectCartId, selectCartProducts } from '../../pages/cart/model/cartSli
 import type { CartItem } from '../../widgets/cart-item/ui';
 import { Control } from '../../widgets/cart-item/ui';
 import { manageCart } from '../../pages/cart/model/cartSlice';
+import { useState } from 'react';
 
 type ProductInfoValues = {
   product: Product;
@@ -43,7 +44,11 @@ const ProductInfo: React.FC<ProductInfoValues> = ({ product }) => {
     if (findInCart) {
       productsToSend = cartProducts.map(item => {
         if (item.id === product.id) {
-          return { id: item.id, quantity: item.quantity + 1}
+          if (item.quantity < product.stock) {
+            return { id: item.id, quantity: item.quantity + 1}
+          } else {
+            setDisabled(true);
+          }
         } else {
           return item;
         }
@@ -68,6 +73,8 @@ const ProductInfo: React.FC<ProductInfoValues> = ({ product }) => {
     });
     dispatch(manageCart({'id': cartId, 'products': productsToSend}));
   }
+
+  const [disabled, setDisabled] = useState(false);
 
   return (
     <div className={styles.container}>
@@ -99,7 +106,7 @@ const ProductInfo: React.FC<ProductInfoValues> = ({ product }) => {
         <div className={styles.add}>
           { 
             findInCart 
-            ? <Control count={findInCart.quantity} increment={handleAddtoCart} decrement={handleRemoveFromCart}/> 
+            ? <Control count={findInCart.quantity} increment={handleAddtoCart} decrement={handleRemoveFromCart} isDisabledPlus={disabled} /> 
             : <Btn iconName='cart' onClick={handleAddtoCart} />
           }
         </div>
