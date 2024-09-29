@@ -6,6 +6,7 @@ import { useSearchByTitleQuery } from '../../model/catalogSlice';
 import { useState, useEffect, ChangeEvent } from 'react';
 import { debounce } from 'lodash';
 import { ITEMS_PER_PAGE } from '../../api';
+import type { Product } from '../../../../share';
 
 const Catalog: React.FC = () => {
   const [ searchQuery, setSearchQuery ] = useState('');
@@ -23,7 +24,7 @@ const Catalog: React.FC = () => {
     setSkip(prevVal => prevVal + ITEMS_PER_PAGE);
   }
   
-  const { data, error, isLoading } = useSearchByTitleQuery({ title: debouncedSearchQuery, skip }, { refetchOnMountOrArgChange: true });
+  const { data, isLoading } = useSearchByTitleQuery({ title: debouncedSearchQuery, skip }, { refetchOnMountOrArgChange: true });
 
   useEffect(() => {
     if (data) {
@@ -31,7 +32,10 @@ const Catalog: React.FC = () => {
         if (skip === 0) {
           return data.products;
         } else {
-          return [...prevProducts, ...data.products]
+          const newProducts = data.products.filter((product: Product) => 
+            !prevProducts.some((prevProduct: Product) => prevProduct.id === product.id)
+          );
+          return [...prevProducts, ...newProducts]
         }
       });
     }
