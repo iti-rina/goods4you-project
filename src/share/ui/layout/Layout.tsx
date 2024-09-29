@@ -5,9 +5,11 @@ import styles from './layout.module.css';
 
 const Layout: React.FC = () => {
   const { pathname } = useLocation();
+
+
   return (
     <div className={styles.container}>
-      <Header user='Johnson Smith' />
+      <Header />
 
       <main className={styles.main}>
         <Outlet /> 
