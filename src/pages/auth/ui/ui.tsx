@@ -2,16 +2,19 @@ import { Btn } from "../../../share";
 import { Title } from "../../../share/ui/title";
 import styles from './ui.module.css';
 import { useSendAuthMutation, useTryAuthQuery } from "../model/authSlice";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Loader } from "../../../share/ui/loader";
 
 const AuthPage: React.FC = () => {
   const navigate = useNavigate();
   const { data } = useTryAuthQuery();
-  if (data) {
-    navigate('/');
-  }
+  useEffect(() => {
+    if (data) {
+      navigate('/');
+    }
+  }, [data, navigate]);
+
   
   const [sendAuth, { isLoading, error }] = useSendAuthMutation();
   const [ inputUsername, setInputUsername ] = useState('');
@@ -32,6 +35,7 @@ const AuthPage: React.FC = () => {
       const response = await sendAuth({ username: inputUsername, password: inputPassword }).unwrap();
       window.localStorage.setItem('accessToken', response.accessToken);
       navigate('/');
+      window.location.reload();
     } catch (err) {
       console.error('Error:', err);
     }
