@@ -6,18 +6,22 @@ import { CartItem } from '../../widgets/cart-item';
 import styles from './cartPage.module.css';
 import { useTryAuthQuery } from '../auth/model/authSlice';
 import { Loader } from '../../share/ui/loader';
+import { useNavigate } from 'react-router-dom';
 
 const CartPage: React.FC = () => {
   const dispatch = useDispatch();
   const { cart, loading, error } = useSelector((state) => state.cart);
   const { data } = useTryAuthQuery();
+  const navigate =  useNavigate();
 
 
   useEffect(() => {
     if (data) {
       dispatch(fetchCart(data.id));
+    } else {
+      navigate('/login');
     }
-  }, [dispatch, data]);
+  }, [dispatch, data, navigate]);
 
   if (loading) return <Loader />;
   if (error) return <p>Error: {error.data.message}</p>;
