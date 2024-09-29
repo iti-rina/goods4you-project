@@ -4,15 +4,19 @@ import { fetchCart } from './model/cartSlice';
 import { Title } from '../../share/ui/title';
 import { CartItem } from '../../widgets/cart-item';
 import styles from './cartPage.module.css';
+import { useTryAuthQuery } from '../auth/model/authSlice';
 
 const CartPage: React.FC = () => {
   const dispatch = useDispatch();
   const { cart, loading, error } = useSelector((state) => state.cart);
-  console.log(cart);
+  const { data } = useTryAuthQuery();
+
 
   useEffect(() => {
-    dispatch(fetchCart());
-  }, [dispatch]);
+    if (data) {
+      dispatch(fetchCart(data.id));
+    }
+  }, [dispatch, data]);
 
   if (loading) return <p>Загрузка...</p>;
   if (error) return <p>Ошибка: {error}</p>;
