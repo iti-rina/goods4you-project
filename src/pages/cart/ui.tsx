@@ -5,6 +5,7 @@ import { Title } from '../../share/ui/title';
 import { CartItem } from '../../widgets/cart-item';
 import styles from './cartPage.module.css';
 import { useTryAuthQuery } from '../auth/model/authSlice';
+import { Loader } from '../../share/ui/loader';
 
 const CartPage: React.FC = () => {
   const dispatch = useDispatch();
@@ -18,7 +19,7 @@ const CartPage: React.FC = () => {
     }
   }, [dispatch, data]);
 
-  if (loading) return <p>Загрузка...</p>;
+  if (loading) return <Loader />;
   if (error) return <p>Ошибка: {error}</p>;
 
   
