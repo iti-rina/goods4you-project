@@ -20,7 +20,7 @@ const CartPage: React.FC = () => {
   }, [dispatch, data]);
 
   if (loading) return <Loader />;
-  if (error) return <p>Ошибка: {error}</p>;
+  if (error) return <p>Error: {error.data.message}</p>;
 
   
   if (cart) {
