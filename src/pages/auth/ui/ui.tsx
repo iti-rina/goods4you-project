@@ -1,16 +1,21 @@
 import { Btn } from "../../../share";
 import { Title } from "../../../share/ui/title";
 import styles from './ui.module.css';
-import { useSendAuthMutation } from "../model/authSlice";
+import { useSendAuthMutation, useTryAuthQuery } from "../model/authSlice";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Loader } from "../../../share/ui/loader";
 
 const AuthPage: React.FC = () => {
+  const navigate = useNavigate();
+  const { data } = useTryAuthQuery();
+  if (data) {
+    navigate('/');
+  }
+  
   const [sendAuth, { isLoading, error }] = useSendAuthMutation();
   const [ inputUsername, setInputUsername ] = useState('');
   const [ inputPassword, setInputPassword ] = useState('');
-  const navigate = useNavigate();
 
   const handleChange = (event, type) => {
     if (type === 'login') {
@@ -31,6 +36,8 @@ const AuthPage: React.FC = () => {
       console.error('Error:', err);
     }
   };
+
+  
 
   return (
     <div className={styles.pageContainer}>
