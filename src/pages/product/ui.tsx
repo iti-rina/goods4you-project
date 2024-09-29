@@ -25,9 +25,6 @@ const ProductPage: React.FC = () => {
       <main>
         <Title title={`${data.title} | Goods4you`} />
         <div className={styles.container}>
-          {isLoading && <p>Загрузка...</p>}
-          {error && <p>Ошибка: {error}</p>}
-  
           <Slider thumbnail={data.thumbnail} images={data.images} />
           <ProductInfo product={data} />
         </div>
