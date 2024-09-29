@@ -5,24 +5,24 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchCart } from "../../pages/cart/model/cartSlice";
 import { useLocation } from "react-router-dom";
+import { useTryAuthQuery } from "../../pages/auth/model/authSlice";
 
-type HeaderPropsType = {
-  user: string
-}
-
-const Header: React.FC<HeaderPropsType> = ({ user }) => {
+const Header: React.FC = () => {
   const { pathname } = useLocation();
+  const { data: authUser } = useTryAuthQuery();
 
   const dispatch = useDispatch();
   const { cart } = useSelector((state) => state.cart);
 
   useEffect(() => {
-    dispatch(fetchCart());
-  }, [dispatch]);
+    if (authUser) {
+      dispatch(fetchCart(authUser.id));
+    }
+  }, [dispatch, authUser]);
 
   return(
     <header className={styles.header}>
-      <LinkComponent text='Goods4you' url='#' isLogo={true} />
+      <LinkComponent text='Goods4you' url='/' isLogo={true} />
       { pathname !== '/login'
         ? (<nav aria-label='Основная навигация'>
             <ul className={styles.menuList}>
@@ -35,7 +35,7 @@ const Header: React.FC<HeaderPropsType> = ({ user }) => {
                   {cart ? <span className={styles.cartQnt}>{cart.totalQuantity > 100 ? '99+' : cart.totalQuantity}</span> : null}
                 </div>
               </li>
-              <li><LinkComponent text={user} url='#'/></li>
+              <li><LinkComponent text={`${authUser?.firstName} ${authUser?.lastName}`} url='#'/></li>
             </ul>
           </nav>)
         : <></>
