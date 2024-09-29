@@ -7,13 +7,14 @@ export type BtnValues = {
   isActive: boolean
   styleProp: string
   onClick?: () => void
+  isDisabled: boolean
 }
 
 type IconValues = {
   name?: string
 }
 
-const Btn: React.FC<Partial<BtnValues>> = ({ text, iconName, isActive=true, styleProp='', onClick }) => {
+const Btn: React.FC<Partial<BtnValues>> = ({ text, iconName, isActive=true, styleProp='', onClick, isDisabled }) => {
   const Icon: React.FC<IconValues> = ({name = 'default'}) => {
     if (name === 'minus') {
       return MinusIcon;
@@ -25,7 +26,7 @@ const Btn: React.FC<Partial<BtnValues>> = ({ text, iconName, isActive=true, styl
   };
 
   return (
-    <button className={`${styles.btn} ${ !isActive ? styles.btnInactive : '' } ${ !text ? styles.btnSquare : ''} ${styleProp}`} onClick={onClick}>
+    <button className={`${styles.btn} ${ !isActive ? styles.btnInactive : '' } ${ !text ? styles.btnSquare : ''} ${styleProp}`} onClick={onClick} disabled={!isActive}>
       { text 
       ? <>{text}</>
       : <Icon name={iconName} />

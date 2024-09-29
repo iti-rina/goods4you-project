@@ -6,6 +6,7 @@ import { selectCartId, selectCartProducts } from '../../pages/cart/model/cartSli
 import { Control } from '../cart-item';
 import type { CartItem } from '../cart-item/ui';
 import { manageCart } from '../../pages/cart/model/cartSlice';
+import { useState } from 'react';
 
 type ProductProps = {
   product: Product
@@ -17,13 +18,19 @@ const ProductCard: React.FC<ProductProps> = ({ product }) => {
   const findInCart = cartProducts.find(el => el.id == product.id);
 
   const dispatch = useDispatch();
+  const [disabled, setDisabled] = useState(false);
+
 
   const handleAddtoCart = () => {
     let productsToSend = [];
     if (findInCart) {
       productsToSend = cartProducts.map(item => {
         if (item.id === product.id) {
-          return { id: item.id, quantity: item.quantity + 1}
+          if (item.quantity < product.stock) {
+            return { id: item.id, quantity: item.quantity + 1}
+          } else {
+            setDisabled(true);
+          }
         } else {
           return item;
         }
@@ -63,7 +70,7 @@ const ProductCard: React.FC<ProductProps> = ({ product }) => {
           </div>
           { 
             findInCart 
-            ? <Control count={findInCart.quantity} increment={handleAddtoCart} decrement={handleRemoveFromCart} /> : <Btn iconName='cart' onClick={handleAddtoCart}/>
+            ? <Control count={findInCart.quantity} increment={handleAddtoCart} decrement={handleRemoveFromCart} isDisabledPlus={disabled} /> : <Btn iconName='cart' onClick={handleAddtoCart}/>
           }
         </div>
       </article>

@@ -87,13 +87,14 @@ type ControlProps = {
   count: number;
   increment?: () => void;
   decrement?: () => void;
+  isDisabledPlus?: boolean
 }
-export const Control: React.FC<ControlProps> = ({ count, increment, decrement }) => {
+export const Control: React.FC<ControlProps> = ({ count, increment, decrement, isDisabledPlus=false }) => {
   return (
     <div className={styles.control}>
       <Btn iconName='minus' onClick={decrement}/>
       {count === 1 ? <span>{count} item</span> : <span>{count} items</span>}
-      <Btn iconName='plus' onClick={increment}/>
+      <Btn iconName='plus' onClick={increment} isActive={!isDisabledPlus} />
     </div>
   );
 }
