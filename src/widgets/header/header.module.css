@@ -1,0 +1,39 @@
+.header {
+  background-color: var(--global-violet);
+  width: 100vw;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 35px 130px;
+  align-items: center;
+}
+
+.menuList {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}
+
+.cartWrapper {
+  display: flex;
+  gap: 6px;
+}
+
+.cartIcon {
+  position: relative;
+}
+
+.cartQnt {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: #fff;
+  font-size: 6px;
+  background-color: var(--global-orange);
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  display: flex;                      
+  justify-content: center;
+  align-items: center; 
+}

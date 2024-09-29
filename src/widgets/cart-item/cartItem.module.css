@@ -1,0 +1,53 @@
+.container {
+  position: relative;
+  display: flex;
+  width: 696px;
+  height: 124px;
+  border: 1px solid var(--global-gray-200);
+  border-radius: 6px;
+  padding: 12px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px
+}
+
+.info {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.thumbnail {
+  width: 100px;
+  height: 100px;
+}
+
+.description {
+  display: flex;
+  gap: 2px;
+  flex-direction: column;
+}
+
+.controller {
+  display: flex;
+  justify-content: space-between;
+  gap: 48px;
+}
+
+.control {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 188px;
+}
+
+.deleteBtn {
+  border: none;
+  border-radius: none;
+  background-color: inherit;
+  color: var(--global-gray-500);
+}
+
+.cart {
+  align-self: center;
+}

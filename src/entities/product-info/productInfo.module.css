@@ -1,0 +1,128 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row-gap: 24px;
+  grid-auto-rows: min-content;
+}
+
+.title {
+  font-size: var(--font-size-3xl);
+  line-height: 56px;
+  margin: 0;
+  height: 56px;
+  text-align: left;
+}
+
+.categories {
+  display: flex;
+  gap: 5px;
+}
+
+.categories > p {
+  font-size: 16px;
+  color: var(--global-gray-600);
+}
+
+.secondInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.thirdInfo {
+  display: grid;
+  grid-row-gap: 12px;
+}
+
+.stock {
+  color: var(--global-orange);
+  font-weight: 500;
+  font-size: var(--font-size-l);
+  line-height: 24px;
+  display: flex;
+  border-bottom: 1px solid var(--global-gray-200);
+  border-top: 1px solid var(--global-gray-200);
+  padding: 12px 0;
+}
+
+.description {
+  font-size: var(--font-size-l);
+  color: var(--global-gray-900);
+  text-align: left;
+  line-height: 30px;
+}
+
+.warranty {
+  font-size: var(--font-size-m);
+  color: var(--global-gray-600);
+  text-align: left;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+.ship {
+  font-size: var(--font-size-m);
+  color: var(--global-gray-600);
+  text-align: left;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+.addCart {
+  display: flex;
+  background-color: var(--global-gray-100);
+  padding: 12px;
+  border-radius: 6px;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.price > div:first-child {
+  border-right: 1px solid var(--global-gray-200);
+  padding: 0 24px 0 0;
+}
+
+.discountPrice {
+  font-size: var(--font-size-3xl);
+  font-weight: 600;
+  color: var(--global-gray-900);
+  line-height: 40px;
+  text-align: left;
+}
+
+.firstPrice {
+  font-size: var(--font-size-m);
+  color: var(--global-gray-600);
+  font-weight: 500;
+  text-decoration: line-through;
+  text-align: left;
+}
+
+.price > .discount {
+  font-size: var(--font-size-m);
+  font-weight: 400;
+  color: var(--global-gray-900);
+  line-height: 24px;
+  text-align: left;
+  padding: 0 0 0 24px;
+}
+
+.price > .discount > .bold {
+  font-weight: 600;
+  color: var(--global-gray-900);
+}
+
+@media (max-width: 768px) {
+
+}
+
+@media (max-width: 480px) {
+
+}
