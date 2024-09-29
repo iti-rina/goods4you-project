@@ -47,6 +47,9 @@ const ProductCard: React.FC<ProductProps> = ({ product }) => {
         if (item.quantity === 0 ) {
           return { id: item.id, quantity: item.quantity}
         } else {
+          if (disabled) {
+            setDisabled(false);
+          }
           return { id: item.id, quantity: item.quantity - 1}
         }
       } else {
