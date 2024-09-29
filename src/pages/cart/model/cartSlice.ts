@@ -2,7 +2,12 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { USER_ID } from '../api';
 
 export const fetchCart = createAsyncThunk('cart/fetchCart', async () => {
-  const response = await fetch(`https://dummyjson.com/carts/user/${USER_ID}`);
+  const response = await fetch(`https://dummyjson.com/auth/carts/user/${USER_ID}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${window.localStorage.getItem('accessToken')}`
+    }
+  });
   if (!response.ok) {
     throw new Error('Ошибка при загрузке данных');
   }
