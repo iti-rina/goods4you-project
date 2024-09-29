@@ -1,6 +1,5 @@
 import styles from './productInfo.module.css';
-import { Product } from '../../share'
-import {AddToCart} from '../../features'
+import { Btn, Product } from '../../share'
 import { StarRating } from '../../share/ui/rating';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectCartId, selectCartProducts } from '../../pages/cart/model/cartSlice';
@@ -101,7 +100,7 @@ const ProductInfo: React.FC<ProductInfoValues> = ({ product }) => {
           { 
             findInCart 
             ? <Control count={findInCart.quantity} increment={handleAddtoCart} decrement={handleRemoveFromCart}/> 
-            : <AddToCart type='icon' id={product.id} onClick={handleAddtoCart} />
+            : <Btn iconName='cart' onClick={handleAddtoCart} />
           }
         </div>
       </div>
