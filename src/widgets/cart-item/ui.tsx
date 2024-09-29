@@ -1,7 +1,8 @@
-import { useState } from "react"
 import { Btn } from "../../share";
 import styles from './cartItem.module.css';
 import { roundUpToTwoDecimalPlaces } from '../../entities';
+import { useDispatch, useSelector } from "react-redux";
+import { manageCart, selectCartId, selectCartProducts } from "../../pages/cart/model/cartSlice";
 
 type CartItemProps = {
   data: CartItem
@@ -19,15 +20,45 @@ export type CartItem = {
 }
 
 const CartItem: React.FC<CartItemProps> = ({ data }) => {
-  const [currentCount, setCurrentCount] = useState(data.quantity);
-  const handleIncrement = () => {
-    setCurrentCount(prevCount => prevCount + 1);
+  const cartProducts: CartItem[] = useSelector(selectCartProducts);
+  const cartId = useSelector(selectCartId);
+  const dispatch = useDispatch();
+
+  const handleAddtoCart = () => {
+    const productsToSend = cartProducts.map(item => {
+      if (item.id === data.id) {
+        return { id: item.id, quantity: item.quantity + 1}
+      } else {
+        return item;
+      }
+    });
+    dispatch(manageCart({'id': cartId, 'products': productsToSend}));
   }
 
-  const handleDecrement = () => {
-    if (currentCount !== 1) {
-      setCurrentCount(prevCount => prevCount - 1);
-    }
+  const handleRemoveFromCart = () => {
+    const productsToSend = cartProducts.map(item => {
+      if (item.id === data.id) {
+        if (item.quantity === 0 ) {
+          return { id: item.id, quantity: item.quantity}
+        } else {
+          return { id: item.id, quantity: item.quantity - 1}
+        }
+      } else {
+        return item;
+      }
+    });
+    dispatch(manageCart({'id': cartId, 'products': productsToSend}));
+  }
+
+  const handleDeleteFromCart = () => {
+    const productsToSend = cartProducts.map(item => {
+      if (item.id === data.id) {
+        return { id: item.id, quantity: 0}
+      } else {
+        return item;
+      }
+    });
+    dispatch(manageCart({'id': cartId, 'products': productsToSend}));
   }
 
   const discountPrice = data.price * (1 - data.discountPercentage / 100);
@@ -40,8 +71,12 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
         <p>{data.title}</p>
         <p>${roundedPrice}</p>
       </div>
-      <Control count={data.quantity} increment={handleIncrement} decrement={handleDecrement} />
-      <button className={styles.deleteBtn}>Delete</button>
+      { data.quantity === 0
+      ? <Btn iconName='cart' onClick={handleAddtoCart} />
+      : <>
+        <Control count={data.quantity} increment={handleAddtoCart} decrement={handleRemoveFromCart} />
+        <button className={styles.deleteBtn} onClick={handleDeleteFromCart}>Delete</button>
+      </>}
     </div>
   )
 }
