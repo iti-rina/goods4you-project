@@ -1,7 +1,8 @@
 import ProductInfo from './ui';
-import { roundUpToTwoDecimalPlaces } from './ui';
+import { roundUpToTwoDecimalPlaces, roundToClosestNumber } from './ui';
 
 export {
   ProductInfo,
-  roundUpToTwoDecimalPlaces
+  roundUpToTwoDecimalPlaces,
+  roundToClosestNumber
 }
