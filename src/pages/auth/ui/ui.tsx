@@ -1,13 +1,16 @@
 import { Btn } from "../../../share";
 import { Title } from "../../../share/ui/title";
 import styles from './ui.module.css';
-import { useTryAuthMutation } from "../model/authSlice";
+import { useSendAuthMutation } from "../model/authSlice";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Loader } from "../../../share/ui/loader";
 
 const AuthPage: React.FC = () => {
-  const [tryAuth, { isLoading, isSuccess, error }] = useTryAuthMutation();
+  const [sendAuth, { isLoading, error }] = useSendAuthMutation();
   const [ inputUsername, setInputUsername ] = useState('');
   const [ inputPassword, setInputPassword ] = useState('');
+  const navigate = useNavigate();
 
   const handleChange = (event, type) => {
     if (type === 'login') {
@@ -21,8 +24,9 @@ const AuthPage: React.FC = () => {
   const handleSignIn = async (e) => {
     e.preventDefault();
     try {
-      const response = await tryAuth({ username: inputUsername, password: inputPassword }).unwrap();
+      const response = await sendAuth({ username: inputUsername, password: inputPassword }).unwrap();
       window.localStorage.setItem('accessToken', response.accessToken);
+      navigate('/');
     } catch (err) {
       console.error('Error:', err);
     }
@@ -35,6 +39,8 @@ const AuthPage: React.FC = () => {
       <form className={styles.formContainer}>
         <input value={inputUsername} onChange={(e) => handleChange(e, 'login')} placeholder='Login' className={styles.input} />
         <input value={inputPassword} onChange={(e) => handleChange(e, 'pass')} type='password' placeholder='Password' className={styles.input}/>
+        {isLoading ? <Loader /> : <></>}
+        {error ? <p className={styles.error}>Error: {error.data.message}</p> : <></>}
         <Btn text='Sign in' styleProp={styles.signInBtn} onClick={(e) => handleSignIn(e)} />
       </form>
     </div>
