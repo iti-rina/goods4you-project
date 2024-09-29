@@ -5,9 +5,19 @@ export const authApi = createApi({
   reducerPath: 'authApi',
   baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
   endpoints: (builder) => ({
-    tryAuth: builder.mutation({
+    tryAuth: builder.query({
+      query: () => ({
+        url: '/me',
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${window.localStorage.getItem('accessToken')}`
+        },
+      })
+    }),
+    sendAuth: builder.mutation({
       query: ({ username, password }) => ({
-        url: '/auth/login',
+        url: '/login',
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({'username': username, 'password': password})
@@ -16,4 +26,4 @@ export const authApi = createApi({
   }),
 });
 
-export const { useTryAuthMutation} = authApi;
+export const { useTryAuthQuery, useSendAuthMutation} = authApi;
