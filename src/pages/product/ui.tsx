@@ -10,7 +10,6 @@ const ProductPage: React.FC = () => {
   const id = pathname.split('/').pop();
 
   const { data, isLoading, error } = useGetProductByIdQuery(id);
-  console.log(data);
 
   if (isLoading) {
     return <p>Загрузка...</p>;

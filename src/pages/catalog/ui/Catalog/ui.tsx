@@ -50,6 +50,8 @@ const Catalog: React.FC = () => {
   
   return (
     <section id='catalog' className={styles.wrapper}>
+
+
       <h2 className={styles.title}>Catalog</h2>
       <SearchBar 
         query={searchQuery}
@@ -57,7 +59,6 @@ const Catalog: React.FC = () => {
       />
 
       {isLoading && <p>Загрузка...</p>}
-      {error && <p>Ошибка: {error}</p>}
 
       <ProductList products={products} />
 
