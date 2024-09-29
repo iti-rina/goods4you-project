@@ -3,6 +3,7 @@ import styles from './productPage.module.css';
 import { useGetProductByIdQuery } from './model/productSlice';
 import { useLocation } from 'react-router-dom';
 import { Title } from '../../share/ui/title';
+import { Loader } from '../../share/ui/loader';
 
 
 const ProductPage: React.FC = () => {
@@ -12,11 +13,11 @@ const ProductPage: React.FC = () => {
   const { data, isLoading, error } = useGetProductByIdQuery(id);
 
   if (isLoading) {
-    return <p>Загрузка...</p>;
+    return <Loader />;
   }
   
   if (error) {
-    return <p>Произошла ошибка: {error.message}</p>;
+    return <p>Error occured: {error.data.message}</p>;
   }
   
   if (data) {
