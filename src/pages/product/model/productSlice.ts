@@ -6,7 +6,14 @@ export const productApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
   endpoints: (builder) => ({
     getProductById: builder.query({
-      query: (id) => `${id}`,
+      query: (id) => ({
+        url: `${id}`,
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${window.localStorage.getItem('accessToken')}`
+        },
+      }),
     }),
   }),
 });
