@@ -1,4 +1,5 @@
 .container {
+  position: relative;
   display: flex;
   width: 696px;
   height: 124px;
@@ -6,6 +7,13 @@
   border-radius: 6px;
   padding: 12px;
   justify-content: space-between;
+  align-items: center;
+  gap: 24px
+}
+
+.info {
+  display: flex;
+  gap: 10px;
   align-items: center;
 }
 
@@ -20,11 +28,17 @@
   flex-direction: column;
 }
 
+.controller {
+  display: flex;
+  justify-content: space-between;
+  gap: 48px;
+}
+
 .control {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-grow: 1;
+  width: 188px;
 }
 
 .deleteBtn {
@@ -32,4 +46,8 @@
   border-radius: none;
   background-color: inherit;
   color: var(--global-gray-500);
+}
+
+.cart {
+  align-self: center;
 }

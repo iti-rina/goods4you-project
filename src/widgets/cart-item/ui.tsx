@@ -66,17 +66,19 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
 
   return (
     <div className={styles.container}>
-      <img src={data.thumbnail} alt={`Фотография товара ${data.title}`} className={styles.thumbnail}/>
-      <div className={styles.description}>
-        <p>{data.title}</p>
-        <p>${roundedPrice}</p>
+      <div className={styles.info}>
+        <img src={data.thumbnail} alt={`Фотография товара ${data.title}`} className={styles.thumbnail}/>
+          <div className={styles.description}>
+            <p>{data.title}</p>
+            <p>${roundedPrice}</p>
+          </div>
       </div>
       { data.quantity === 0
-      ? <Btn iconName='cart' onClick={handleAddtoCart} />
-      : <>
+      ? <Btn iconName='cart' onClick={handleAddtoCart} styleProp={styles.cart} />
+      : <div className={styles.controller}>
         <Control count={data.quantity} increment={handleAddtoCart} decrement={handleRemoveFromCart} />
         <button className={styles.deleteBtn} onClick={handleDeleteFromCart}>Delete</button>
-      </>}
+      </div>}
     </div>
   )
 }
