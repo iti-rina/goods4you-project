@@ -10,7 +10,7 @@ const AuthPage: React.FC = () => {
       <h1 className={styles.heading} >Sign in</h1>
       <form className={styles.formContainer}>
         <input placeholder='Login' className={styles.input} />
-        <input placeholder='Password' className={styles.input}/>
+        <input type='password' placeholder='Password' className={styles.input}/>
         <Btn text='Sign in' styleProp={styles.signInBtn} />
       </form>
     </div>
